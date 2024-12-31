@@ -1,0 +1,10 @@
+# Usage examples
+# You may use shell scripts (.sh files) for the experiments.
+# Default maximum round setting for the shell scripts is 30.
+# "run_exp_cond1.sh" is for "Condition 1" and "run_exp_cond2" is for "Condition 2"
+
+# To execute the script for "Condition 1," use the following command:
+./run_exp_cond1.sh
+
+# If you have trouble with permission issue, try the following command:
+chmod +x *.sh
