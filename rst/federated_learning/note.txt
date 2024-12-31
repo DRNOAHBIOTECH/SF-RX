@@ -1,0 +1,1 @@
+Run shell scripts in "src/federated_learning/"
