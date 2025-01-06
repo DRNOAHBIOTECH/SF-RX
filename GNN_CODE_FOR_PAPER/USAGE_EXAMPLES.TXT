@@ -1,0 +1,13 @@
+# Usage examples
+# MODEL = [ECN, ECN_Transformer, GAT, GCN, GCN_Transformer]
+1. Basic usage:
+python MODEL_train.py
+
+2. Display Help:
+python MODEL_train.py
+
+3. Change split level:
+python MODEL_train.py --split_level v2
+
+4. Enable early stopping with custom parameters
+python MODEL_train.py --enable_early_stopping --learning_rate 0.0001 --weight_decay 0.00001
