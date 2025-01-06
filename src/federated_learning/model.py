@@ -22,9 +22,9 @@ class MlpMultiTask(nn.Module): # Baseline model
         self.hidden_layers = nn.Sequential(
             *[
                 nn.Sequential(
-                    nn.Linear(input_shape if i == 0 else 2048, 2048),
+                    nn.Linear(input_shape if i == 0 else 512, 512),
                     nn.ReLU(),
-                    nn.BatchNorm1d(2048),
+                    nn.BatchNorm1d(512),
                     nn.Dropout(dropout_rate)
                 ) for i in range(hidden_size)
             ]
@@ -33,15 +33,15 @@ class MlpMultiTask(nn.Module): # Baseline model
         self.intermediate = nn.Sequential(
             *[
                 nn.Sequential(
-                    nn.Linear(2048 if i == 0 else 1024, 1024),
+                    nn.Linear(512 if i == 0 else 256, 256),
                     nn.ReLU(),
-                    nn.BatchNorm1d(1024),
+                    nn.BatchNorm1d(256),
                     nn.Dropout(dropout_rate)
                 ) for i in range(intermediate_layer)
             ]
         )
         
-        self.output_1 = nn.Linear(1024, output_shape)
+        self.output_1 = nn.Linear(256, output_shape)
 
     def forward(self, x):
         x = self.norm(x)
