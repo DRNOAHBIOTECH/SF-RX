@@ -1,0 +1,17 @@
+1. Run Shell Scripts to Perform Experiments
+
+Execute the provided shell scripts to run the federated learning experiments. The scripts will automatically perform the necessary computations and save the results.
+
+# ./run_exp_cond1.sh
+# ./run_exp_cond2.sh
+
+The results will be saved in the "FEDERATED_LEARNING/result" directory.
+
+If you encounter a permission issue try below:
+
+# chmod +x *.sh
+
+
+2. Analyze the Results
+
+Once the experiments are complete, open and execute the Jupyter Notebook "check_results.ipynb" to analyze the results.
