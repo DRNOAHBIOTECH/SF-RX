@@ -1,2 +1,0 @@
-data/drugscom_X.parquet filter=lfs diff=lfs merge=lfs -text
-data/pdr_X.parquet filter=lfs diff=lfs merge=lfs -text
