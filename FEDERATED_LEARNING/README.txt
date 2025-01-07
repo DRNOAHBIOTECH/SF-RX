@@ -4,10 +4,7 @@ Due to GitHub's storage policy, the feature table for federated learning is stor
 
 https://drive.google.com/drive/folders/1jetBBw3VaoGHm3oRUgnrPaaXWn2NfL3-?usp=sharing
 
-Please download the following files from the link:
-
-	1) drugscom_X.parquet
-	2) pdr_X.parquet
+Please download six parquet files from the link.
 
 After downloading, place these files in the "FEDERATED_LEARNING/data" directory.
 
