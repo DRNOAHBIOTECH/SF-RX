@@ -7,7 +7,7 @@ This repository contains the code used to reproduce the results from our researc
 - **[SF_RX_MODEL]**: Code and models for the **SF-RX** implementation, optimized for GPU environments.
 - **[GNNs]**: Code for training GNNs and transformer models used in the paper.
 - **[FEDERATED_LEARNING]**: Federated learning experiments with GPU parallelism.
-- **[Permutation_TEST]**: Permutation test for distributional shifts of scaffold structures.
+- **[PERMUTATION_TEST]**: Permutation test for distributional shifts of scaffold structures.
 
 ## Data
 - All required data is located in the `data` folder within each directory.
