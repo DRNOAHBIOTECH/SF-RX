@@ -1,6 +1,6 @@
 # SF-RX
 
-This repository contains the code used to reproduce the results from our research paper. The software is organized into four folders, each corresponding to a specific task discussed in the paper. Below are detailed instructions and notes about the code structure and data.
+This repository contains the code used to reproduce the results from our research paper **"SF-Rx: A Multi-output Deep Neural Network-Based Framework Predicting Drug-Drug Interaction under Realistic Conditions for Safe Prescription"**. The software is organized into four folders, each corresponding to a specific task discussed in the paper. Below are detailed instructions and notes about the code structure and data.
 
 ## Folder Structure
 
