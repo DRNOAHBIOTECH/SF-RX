@@ -17,7 +17,7 @@ This repository contains the code used to reproduce the results from our researc
 ## Key Features
 ### GPU Optimization
 - **SF-RX Model** and **Federated Learning** tasks are designed to run on GPU environments.
-- Federated Learning assumes **4 GPUs** for parallel execution due to the computationally intensive nature of the experiments.
+- Federated Learning assumes **4 GPUs** for parallel execution due to the computationally intensive nature of the FL experiments.
 - To modify GPU settings, update the `parallelism` section in [`FEDERATED_LEARNING/experiment.py`](FEDERATED_LEARNING/experiment.py).
 
 ### Dependencies
