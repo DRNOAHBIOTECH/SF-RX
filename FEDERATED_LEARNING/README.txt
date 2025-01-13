@@ -2,7 +2,7 @@
 
 Due to GitHub's storage policy, the feature table for federated learning is stored in Google Drive. You can access it via the following link:
 
-https://drive.google.com/drive/folders/1jetBBw3VaoGHm3oRUgnrPaaXWn2NfL3-?usp=sharing
+https://drive.google.com/drive/folders/1maQY7h8i80baqwbvQNaE4-jR8t8xypvf?usp=drive_link
 
 Please download six parquet files from the link.
 
