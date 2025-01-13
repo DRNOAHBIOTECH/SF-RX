@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import torch
 
 def load_data(X_path, y_path):
     """
@@ -106,3 +107,44 @@ def adj_lv2_split_training_data(X, y, val_fold, rows_to_remove):
     tr_X = tr_X.drop(rows_to_remove2)
 
     return tr_X, tr_y
+
+def gini_impurity(column, cat_levels):
+    """
+    Calculates the Gini impurity for a given column of categorical data.
+
+    Parameters:
+    column (array-like): A column of categorical data represented as integers.
+    cat_levels (int): The number of possible categories (levels) in the data.
+
+    Returns:
+    float: The Gini impurity of the column.
+    """
+    possible_values = np.arange(cat_levels)
+    counts = np.bincount(column, minlength=len(possible_values))
+    probabilities = counts / len(column)
+    
+    gini = 1 - np.sum(probabilities ** 2)
+    return gini
+
+def load_preds(rst_list, target):
+    """
+    Processes model predictions, calculates Gini impurity for each column,
+    and returns the results.
+
+    Parameters:
+    rst_list (list of torch.Tensor): A list of prediction tensors from the model,
+                                      where each tensor corresponds to an inference iteration.
+    target (str): The target output category ('sev', 'desc', or 'dir') used to determine
+                  the number of categorical levels.
+
+    Returns:
+    pandas.Series: Gini impurity values for each column of predictions.
+    """
+    output_levs = {'sev': 3, 'desc': 30, 'dir': 2}
+    infs_pred = rst_list
+    pred_rst = torch.stack(infs_pred, dim=0).cpu().numpy()
+    pred_rst = pd.DataFrame(pred_rst)
+
+    gini_results = pred_rst.apply(lambda col: gini_impurity(col, output_levs[target]))
+
+    return gini_results
