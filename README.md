@@ -23,4 +23,4 @@ This repository contains the code used to reproduce the results from our researc
 ### Dependencies
 - All software and library version requirements are listed in [`dependencies.txt`](dependencies.txt).
 
-For any questions or issues, feel free to reach out to us via [jhyu@drnoahbiotech.com].
+For any questions or issues, feel free to reach out to us via [shbae@drnoahbiotech.com], [dekim@drnoahbiotech.com], [jhyu@drnoahbiotech.com].
