@@ -13,8 +13,7 @@ After downloading, place these files in the "FEDERATED_LEARNING/data" directory.
 
 Execute the provided shell scripts to run the federated learning experiments. The scripts will automatically perform the necessary computations and save the results.
 
-# ./run_exp_cond1.sh
-# ./run_exp_cond2.sh
+# ./run_experiment.sh
 
 The results will be saved in the "FEDERATED_LEARNING/result" directory.
 

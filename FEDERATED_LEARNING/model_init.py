@@ -33,8 +33,8 @@ def average_shared_weights(shared_layers_list):
     
     return avg_weights
 
-def model_initialization(lv, fl_round, condition):
-    rsts = RESULT_PATH + f'Condition{condition}/lv{lv}/round{fl_round}/'
+def model_initialization(lv, fl_round):
+    rsts = RESULT_PATH + f'lv{lv}/round{fl_round}/'
     models = []
     for dat_src in DATA_SOURCE:
         model = MlpMultiTask(**load_hyperparam(lv, dat_src))
@@ -45,8 +45,8 @@ def model_initialization(lv, fl_round, condition):
     avg_share_layers = average_shared_weights(models)
     torch.save(avg_share_layers, rsts + f'shared_avg_layers.pth')
     
-def generate_null_models(lv, condition): # for the round 0
-    rsts = RESULT_PATH + f'Condition{condition}/lv{lv}/round{0}/'
+def generate_null_models(lv): # for the round 0
+    rsts = RESULT_PATH + f'lv{lv}/round{0}/'
     for dat_src in DATA_SOURCE:
         model = MlpMultiTask(**load_hyperparam(lv, dat_src))
         torch.save(model.state_dict(), rsts + f'{dat_src}_model.pth')

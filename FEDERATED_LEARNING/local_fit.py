@@ -22,22 +22,18 @@ from config import *
 
 torch.set_float32_matmul_precision('medium')
 
-def main(dat_src, lv, fl_round, device, condition):    
-    rsts = RESULT_PATH + f'Condition{condition}/lv{lv}/round{fl_round}/'
-    rsts_1 = RESULT_PATH + f'Condition{condition}/lv{lv}/round{fl_round-1}/'
+def main(dat_src, lv, fl_round, device):    
+    rsts = RESULT_PATH + f'lv{lv}/round{fl_round}/'
+    rsts_1 = RESULT_PATH + f'lv{lv}/round{fl_round-1}/'
     
     X, y, y_sev = data_loading(dat_src)
     
     data_split = data_splitter(lv)
+
+    te_fold = TE_FOLD[dat_src]
+    val_fold = VAL_FOLD[dat_src]
     
-    if condition == 1: # Condition 1
-        te_fold = 0 
-        val_fold = 4 
-    elif condition == 2: # Condition 2
-        te_fold = TE_FOLD[dat_src]
-        val_fold = VAL_FOLD[dat_src]
-    
-    val_logger = TensorBoardLogger(save_dir=RESULT_PATH + f'log/Condition{condition}/lv{lv}/', name=f"{dat_src}", version=f'Round{fl_round}')
+    val_logger = TensorBoardLogger(save_dir=RESULT_PATH + f'log/lv{lv}/', name=f"{dat_src}", version=f'Round{fl_round}')
     
     MD_idx, te_idx = data_split(y, te_fold)
     te_X, te_y_sev = X[te_idx].astype(np.float32), y_sev[te_idx].astype(np.float32)
@@ -102,8 +98,7 @@ if __name__ == "__main__":
     parser.add_argument("--lv", type=int, choices=[1,2,3,4], required=True, help="The level setting")
     parser.add_argument("--fl_round", type=int, required=True, help="Round for federated learnings")
     parser.add_argument("--device", type=int, choices=[0, 1, 2, 3], required=True, help="The gpu device to use")
-    parser.add_argument("--condition", type=int, choices=[1, 2], required=True, help="Condition to be tested")
 
     args = parser.parse_args()
     
-    main(args.dat_src, args.lv, args.fl_round, args.device, args.condition)
+    main(args.dat_src, args.lv, args.fl_round, args.device)
