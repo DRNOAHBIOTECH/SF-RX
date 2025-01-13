@@ -60,9 +60,9 @@ def main(lv, n_inference, device):
             dropout_rate = 0.3
         )
 
-        checkitoput = torch.load(RESULT_PATH + f'model/Adjusted/Adjusted_LV{lv}_val{val_fold}_model.pth')
-
-        model.load_state_dict(checkitoput)
+        checkitoput = torch.load(RESULT_PATH + f'model/Adjusted/Adjusted_LV{lv}_val{val_fold}_model.ckpt')
+        state_dict = {k.replace("model.", ""): v for k, v in checkitoput['state_dict'].items()}
+        model.load_state_dict(state_dict)
 
         model.train()
         model = model.to(f'cuda:{device}')

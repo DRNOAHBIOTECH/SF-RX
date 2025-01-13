@@ -10,8 +10,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
-from pytorch_lightning.loggers import TensorBoardLogger, CSVLogger
-from lightning.pytorch.callbacks import EarlyStopping
+from pytorch_lightning.loggers import CSVLogger
+from lightning.pytorch.callbacks import EarlyStopping, ModelCheckpoint
 
 import lightning as L
 import torchmetrics
@@ -30,8 +30,8 @@ def main(lv, device):
     X, y = load_data(X_path, y_path)
     
     for val_fold in range(5):    
-        val_logger = TensorBoardLogger(save_dir=RESULT_PATH + f'log/lv{lv}/', name=f"Adjusted", version = f'{val_fold}')
         val_csv_logger = CSVLogger(save_dir=RESULT_PATH + f'lv{lv}/Adjusted/val_fold{val_fold}')
+        
         if lv != 2:
             val_X, val_y, tr_X, tr_y = split_data(X, y, val_fold, lv)
         else:
@@ -71,22 +71,26 @@ def main(lv, device):
             output_shape_2=15,
             dropout_rate = 0.3
         )
-
+        
         lit_multi_output = LitMultiOuputModel(model, 15, 3)
         early_stop_callback = EarlyStopping(
-                monitor='validation_loss',
+                monitor='val_f1_score_macro_desc',
                 min_delta=0.0,
                 patience=10,
                 verbose=True,
-                mode='min' 
-            )
-
-
-        trainer = L.Trainer(callbacks=[early_stop_callback], devices = [device], max_epochs=100, logger=[val_logger, val_csv_logger])
+                mode='max' 
+        )
+        checkpoint_callback = ModelCheckpoint(
+                save_top_k=1,
+                monitor="val_f1_score_macro_desc",
+                mode="max",
+                dirpath=RESULT_PATH + f'model/Adjusted/',
+                filename= f'Adjusted_LV{lv}_val{val_fold}_model'
+        )
+        
+        trainer = L.Trainer(callbacks=[early_stop_callback, checkpoint_callback], devices = [device], max_epochs=100, logger=[val_csv_logger])
 
         trainer.fit(lit_multi_output, tr_loader, val_loader)
-
-        torch.save(model.state_dict(), RESULT_PATH + f'model/Adjusted/Adjusted_LV{lv}_val{val_fold}_model.pth')
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SF-RX adjsuted model for DDI Prediction")
