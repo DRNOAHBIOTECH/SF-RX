@@ -94,14 +94,14 @@ def adj_lv2_split_training_data(X, y, val_fold, rows_to_remove):
         pd.DataFrame: Training 'X'.
         pd.DataFrame: Training 'y'.
     """
+    y['unique_IDs'] = (y.index // 2) + 1
+    
     tr_y = y[y.FoldID1 != val_fold]
     tr_X = X.loc[tr_y.index]
-
+    
     # Filter training rows related to validation fold
     tr_to_filt = tr_y[(tr_y.FoldID1 != val_fold) & (tr_y.FoldID2 == val_fold)]
-    rows_to_remove2 = tr_to_filt[~tr_to_filt[['DrugbankID1', 'DrugbankID2']]
-                                .apply(tuple, axis=1)
-                                .isin(map(tuple, y.loc[rows_to_remove][['DrugbankID2', 'DrugbankID1']].values))].index
+    rows_to_remove2 = tr_to_filt[~(tr_to_filt.unique_IDs.isin(y.loc[rows_to_remove].unique_IDs))].index
 
     tr_y = tr_y.drop(rows_to_remove2)
     tr_X = tr_X.drop(rows_to_remove2)
