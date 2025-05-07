@@ -13,7 +13,7 @@ This repository contains the code used to reproduce the results from our researc
 - All required data is located in the `data` folder within each directory.
 - For large files, Google Drive links are provided in the respective folders.
 - **Note**: The original results in the paper were generated using proprietary DrugBank data, which cannot be shared. Instead, we created **toy datasets** by combining publicly available data from DrugBank and PDR.
-# **Note**: **Drugs.com data was used with retrospective permission from Drugs.com. Original source data are not publicly available**
+# **⚠️Note⚠️**: **Drugs.com data was used with retrospective permission from Drugs.com. Original source data are not publicly available!**
   
 ## Key Features
 ### GPU Optimization
