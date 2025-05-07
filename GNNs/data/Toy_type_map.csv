@@ -1,0 +1,18 @@
+label,description
+4,The metabolism of #Drug2 can be increased when combined with #Drug1.
+8,The therapeutic efficacy of #Drug2 can be increased when used in combination with #Drug1.
+10,#Drug1 may increase the antihypertensive activities of #Drug2.
+33,The risk or severity of QTc prolongation can be increased when #Drug1 is combined with #Drug2.
+37,#Drug1 may decrease the antihypertensive activities of #Drug2.
+42,The risk or severity of hyperkalemia can be increased when #Drug1 is combined with #Drug2.
+47,The metabolism of #Drug2 can be decreased when combined with #Drug1.
+49,The risk or severity of adverse effects can be increased when #Drug1 is combined with #Drug2.
+56,The risk or severity of hypotension can be increased when #Drug1 is combined with #Drug2.
+60,#Drug1 may increase the hypotensive activities of #Drug2.
+65,#Drug1 may increase the excretion rate of #Drug2 which could result in a lower serum level and potentially a reduction in efficacy.
+66,The risk or severity of bleeding can be increased when #Drug1 is combined with #Drug2.
+70,The therapeutic efficacy of #Drug2 can be decreased when used in combination with #Drug1.
+72,#Drug1 may decrease the excretion rate of #Drug2 which could result in a higher serum level.
+73,The serum concentration of #Drug2 can be increased when it is combined with #Drug1.
+75,The serum concentration of #Drug2 can be decreased when it is combined with #Drug1.
+82,#Drug1 may increase the arrhythmogenic activities of #Drug2.
